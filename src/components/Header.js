@@ -5,7 +5,7 @@ function Header() {
     <header id="header">
       <img
         src="/images/logo-raise-now-inverted.png"
-        srcset="
+        srcSet="
           /images/logo-raise-now-inverted@2x.png 2x,
           /images/logo-raise-now-inverted@3x.png 3x
         "
