@@ -1,8 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+import RadioElement from "./RadioElement";
 
 function Card() {
+  const [mode, setMode] = useState("test");
+  const radioElements = [
+    {
+      value: "test",
+      title: "Test",
+      description:
+        "Only transactions and subscriptions in test mode are transferred.",
+    },
+    {
+      value: "production",
+      title: "Production",
+      description:
+        "Only transactions and subscriptions in production mode are transferred.",
+    },
+  ];
+  const handleRadioBtnClick = (e) => {
+    setMode(e.target.value);
+  };
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <div className="card">
+    <form className="card" onSubmit={handleFormSubmit}>
       <section className="card-section">
         <div className="card-header">RaiseNow Setup</div>
         <div className="card-description">
@@ -12,43 +35,24 @@ function Card() {
       </section>
       <div className="divider"></div>
       <section className="card-section">
-        <div className="radio-element">
-          <div>
-            <img
-              src="/images/radio-checked.svg"
-              className="radio-checked"
-              alt="radio-checked"
-            />
-          </div>
-          <div className="radio-label">
-            <div className="radio-label-header">Test</div>
-            <div className="radio-label-description">
-              Only transactions and subscriptions in test mode are transferred.
-            </div>
-          </div>
-        </div>
-        <div className="radio-element">
-          <div>
-            <img
-              src="/images/radio-unchecked.svg"
-              className="radio-checked"
-              alt="radio-unchecked"
-            />
-          </div>
-          <div className="radio-label">
-            <div className="radio-label-header">Production</div>
-            <div className="radio-label-description">
-              Only transactions and subscriptions in production mode are
-              transferred.
-            </div>
-          </div>
-        </div>
+        {radioElements.map((radioElement) => (
+          <RadioElement
+            key={radioElement.value}
+            value={radioElement.value}
+            mode={mode}
+            handleRadioBtnClick={handleRadioBtnClick}
+            title={radioElement.title}
+            description={radioElement.description}
+          />
+        ))}
       </section>
       <div className="divider"></div>
       <section className="card-section submit-container">
-        <button className="submit-button">Next</button>
+        <button className="submit-button" type="submit">
+          Next
+        </button>
       </section>
-    </div>
+    </form>
   );
 }
 
