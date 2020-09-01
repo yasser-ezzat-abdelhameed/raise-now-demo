@@ -1,0 +1,222 @@
+html,
+body {
+  font-size: 1rem;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+}
+
+/*
+  The main Header
+*/
+#header {
+  position: fixed;
+  width: 100%;
+  height: 4.0625em;
+  display: flex;
+  align-items: center;
+  padding-left: 1.25em;
+  background-color: #9e2058;
+}
+
+.main-logo {
+  width: 7.25em;
+  height: 1.1875em;
+  object-fit: contain;
+}
+
+/*
+  The step indicator
+*/
+.step-indicator {
+  top: 4.0625em;
+  position: fixed;
+  width: 100%;
+  height: 3.75em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.step-indicator-label {
+  font-weight: 300;
+  color: #373a3c;
+}
+
+/*
+  The body of the page (the main section)
+  This is done using mobile-first strategy
+*/
+
+#main {
+  margin: 9.0625em 1.25em 1.25em 1.25em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*
+  The description image is not needed for mobile
+*/
+.description-image {
+  display: none;
+}
+
+/*
+  The main card
+*/
+.card {
+  border-radius: 0.25em;
+  box-shadow: 0 3.75em 6.25em 0 rgba(0, 0, 0, 0.15);
+  width: 20.875em;
+  background-color: #ffffff;
+  color: #444444;
+}
+
+.card-section {
+  padding: 1.875em;
+}
+
+.card-header {
+  font-size: 1.25em;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.card-description {
+  margin-top: 1.25em;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #e5e5e5;
+}
+
+.radio-element {
+  display: flex;
+}
+
+.radio-element:nth-of-type(2) {
+  margin-top: 1.25em;
+}
+
+.radio-label {
+  margin-left: 1em;
+}
+
+.radio-label-header {
+  line-height: 1.5;
+}
+
+.radio-label-description {
+  padding-top: 0.3125em;
+  color: #999999;
+  line-height: 1.46;
+  font-size: 0.8125em;
+}
+
+.submit-button {
+  width: 100%;
+  height: 2.375em;
+  font-size: 1em;
+  background-color: #db006b;
+  border-radius: 0.25em;
+  border: solid 0.0625em #db006b;
+  color: #ffffff;
+  line-height: 1.31;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-button:hover,
+.submit-button:focus,
+.submit-button:active {
+  background-color: #9e2058;
+  border: solid 0.0625em #9e2058;
+  outline: none;
+}
+
+.submit-button:disabled {
+  background-color: #dddddd;
+  border: solid 0.0625em #dddddd;
+  color: #999999;
+  cursor: not-allowed;
+}
+
+.submit-button-label {
+  color: #ffffff;
+  line-height: 1.31;
+}
+
+/*
+  tablet-screen (vertical orientation)
+*/
+@media (min-width: 768px) {
+  /*
+    showing the description image for tablets
+  */
+  .description-image {
+    display: unset;
+  }
+  .description-image img {
+    height: 20em;
+  }
+  .card {
+    width: 33.75em;
+  }
+  .card-section {
+    padding: 1.875em 2.5em;
+  }
+}
+
+/*
+  tablet-screen (horizontal orientation)
+*/
+@media (min-width: 1024px) {
+  #main {
+    display: grid;
+    grid-template-columns: 1fr 33.75em 1fr;
+  }
+  .description-image {
+    display: flex;
+    justify-content: center;
+  }
+  .card {
+    width: 33.75em;
+    justify-self: center;
+  }
+  .card-section {
+    padding: 1.875em 2.5em;
+  }
+  .submit-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .submit-button {
+    width: 5.9375em;
+  }
+}
+
+/*
+  desktop
+*/
+@media (min-width: 1366px) {
+  #main {
+    padding-top: 6.25em;
+  }
+  .description-image img {
+    height: unset;
+    margin-top: -1.25em;
+  }
+}
