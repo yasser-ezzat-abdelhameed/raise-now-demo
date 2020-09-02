@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import axios from "axios";
+import { resetMode } from "../actions";
 import RadioElement from "./RadioElement";
 
 /**
  * The form card which has the radio buttons and the submit button
  */
-function Card() {
-  const [mode, setMode] = useState();
-
+function Card({ mode, dispatch }) {
   /* the array which is being used to create the radio elements */
   const radioElements = [
     {
@@ -25,13 +25,6 @@ function Card() {
   ];
 
   /**
-   * setting the mode when a radio button gets clicked
-   */
-  const handleRadioBtnClick = (e) => {
-    setMode(e.target.value);
-  };
-
-  /**
    * submit the form and sending the mode to the endpoint
    */
   const handleFormSubmit = async (e) => {
@@ -44,7 +37,7 @@ function Card() {
         }
       );
       alert(data);
-      setMode(null);
+      dispatch(resetMode());
     } catch (e) {
       alert(e.message);
     }
@@ -65,8 +58,6 @@ function Card() {
           <RadioElement
             key={radioElement.value}
             value={radioElement.value}
-            mode={mode}
-            handleRadioBtnClick={handleRadioBtnClick}
             title={radioElement.title}
             description={radioElement.description}
           />
@@ -82,4 +73,6 @@ function Card() {
   );
 }
 
-export default Card;
+const mapStateToProps = ({ mode }) => ({ mode });
+
+export default connect(mapStateToProps)(Card);
