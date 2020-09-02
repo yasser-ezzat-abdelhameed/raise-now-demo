@@ -8,6 +8,7 @@ import "./styles/resets.css";
 import "./styles/fonts.css";
 import "./styles/main.css";
 import App from "./App";
+import startMockServer from "./mock";
 
 const store = createStore(reducers, middleware);
 
@@ -19,3 +20,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+if (process.env.REACT_APP_MODE === "DEV") {
+  startMockServer();
+}
