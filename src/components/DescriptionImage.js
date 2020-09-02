@@ -1,5 +1,8 @@
 import React from "react";
 
+/**
+ * The graphic that shows with the form card (for tablets and desktops only)
+ */
 function DescriptionImage() {
   return (
     <div className="description-image">

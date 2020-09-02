@@ -1,5 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 
+/**
+ * The radio button element
+ */
 function RadioButton({ value, checked, handleRadioBtnClick }) {
   return (
     <label className="radio-button">
@@ -20,5 +24,11 @@ function RadioButton({ value, checked, handleRadioBtnClick }) {
     </label>
   );
 }
+
+RadioButton.propTypes = {
+  value: PropTypes.string.isRequired,
+  checked: PropTypes.bool.isRequired,
+  handleRadioBtnClick: PropTypes.func.isRequired,
+};
 
 export default RadioButton;

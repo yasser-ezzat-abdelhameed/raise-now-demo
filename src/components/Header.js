@@ -1,5 +1,8 @@
 import React from "react";
 
+/**
+ * The Main Header of the App
+ */
 function Header() {
   return (
     <header id="header">

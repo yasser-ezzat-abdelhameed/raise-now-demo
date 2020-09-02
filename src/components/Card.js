@@ -1,8 +1,14 @@
 import React, { useState } from "react";
+import axios from "axios";
 import RadioElement from "./RadioElement";
 
+/**
+ * The form card which has the radio buttons and the submit button
+ */
 function Card() {
-  const [mode, setMode] = useState("test");
+  const [mode, setMode] = useState();
+
+  /* the array which is being used to create the radio elements */
   const radioElements = [
     {
       value: "test",
@@ -17,11 +23,31 @@ function Card() {
         "Only transactions and subscriptions in production mode are transferred.",
     },
   ];
+
+  /**
+   * setting the mode when a radio button gets clicked
+   */
   const handleRadioBtnClick = (e) => {
     setMode(e.target.value);
   };
-  const handleFormSubmit = (e) => {
+
+  /**
+   * submit the form and sending the mode to the endpoint
+   */
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const { data } = await axios.post(
+        "https://fend-tavel-app.herokuapp.com/mode",
+        {
+          mode,
+        }
+      );
+      alert(data);
+      setMode(null);
+    } catch (e) {
+      alert(e.message);
+    }
   };
 
   return (
@@ -48,7 +74,7 @@ function Card() {
       </section>
       <div className="divider"></div>
       <section className="card-section submit-container">
-        <button className="submit-button" type="submit">
+        <button className="submit-button" type="submit" disabled={!mode}>
           Next
         </button>
       </section>
