@@ -1,3 +1,5 @@
+import { postMode } from "../api";
+
 export const SET_MODE = "SET_MODE";
 export const RESET_MODE = "RESET_MODE";
 
@@ -6,6 +8,17 @@ export const setMode = (mode) => ({
   mode,
 });
 
-export const resetMode = () => ({
+const resetMode = () => ({
   type: RESET_MODE,
 });
+
+export const handlePostMode = () => async (dispatch, getState) => {
+  try {
+    const { mode } = getState();
+    const data = await postMode(mode);
+    alert(data);
+    dispatch(resetMode());
+  } catch (e) {
+    alert(e.message);
+  }
+};

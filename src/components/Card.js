@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import axios from "axios";
-import { resetMode } from "../actions";
+import { handlePostMode } from "../actions";
 import RadioElement from "./RadioElement";
 
 /**
@@ -29,18 +28,7 @@ function Card({ mode, dispatch }) {
    */
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const { data } = await axios.post(
-        "https://fend-tavel-app.herokuapp.com/mode",
-        {
-          mode,
-        }
-      );
-      alert(data);
-      dispatch(resetMode());
-    } catch (e) {
-      alert(e.message);
-    }
+    dispatch(handlePostMode());
   };
 
   return (
