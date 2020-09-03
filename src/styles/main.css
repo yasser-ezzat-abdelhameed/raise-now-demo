@@ -211,6 +211,7 @@ body {
 */
 @media (min-width: 1024px) {
   #main {
+    padding-top: 6.25em;
     display: grid;
     grid-template-columns: 1fr 33.75em 1fr;
   }
@@ -238,9 +239,6 @@ body {
   desktop
 */
 @media (min-width: 1366px) {
-  #main {
-    padding-top: 6.25em;
-  }
   .description-image img {
     height: unset;
     margin-top: -1.25em;
